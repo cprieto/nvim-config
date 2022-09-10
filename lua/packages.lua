@@ -40,6 +40,16 @@ local pkgs = {
 			require'config.lualine'.setup()
 		end,
 	},
+
+	-- WhichKey
+	{
+		"folke/which-key.nvim",
+     	-- commit = "1d449d44e01787ef17dc7b0672eec01a8121b36e",
+	 	config = function()
+	 		require'config.whichkey'.setup()
+	 	end,
+	 	event = "VimEnter",
+	}--]]
 }
 
 return { pkgs = pkgs }
