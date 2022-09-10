@@ -1,6 +1,6 @@
 local pkgs = {
     -- Theme
-    {
+  {
 		'sainnhe/gruvbox-material',
 		config = function()
 			require'config.colorscheme'.setup()
@@ -44,12 +44,40 @@ local pkgs = {
 	-- WhichKey
 	{
 		"folke/which-key.nvim",
-     	-- commit = "1d449d44e01787ef17dc7b0672eec01a8121b36e",
 	 	config = function()
 	 		require'config.whichkey'.setup()
 	 	end,
 	 	event = "VimEnter",
-	}--]]
+	},
+
+	-- File tree
+	{
+		'kyazdani42/nvim-tree.lua',
+		wants = 'nvim-web-devicons',
+		cmd = { 'NvimTreeToggle', 'NvimTreeClose' },
+		config = function()
+      require'config.nvimtree'.setup()
+		end,
+	},
+
+  -- Tabline
+  {
+    'akinsho/bufferline.nvim',
+    wants = 'nvim-web-devicons',
+    event = 'VimEnter',
+    config = function()
+      require'config.bufferline'.setup()
+    end,
+  },
+
+  -- Indent lines
+  {
+    'lukas-reineke/indent-blankline.nvim',
+	event = 'BufReadPre',
+	config = function()
+		require'config.indentlines'.setup()
+	end,
+  },
 }
 
 return { pkgs = pkgs }
