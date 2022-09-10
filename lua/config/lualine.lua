@@ -1,8 +1,10 @@
-return { setup = function()
+local function setup()
     require'lualine'.setup {
-        options = { 
+        options = {
             globalstatus = true,
-            disabled_filetypes = { 'alpha' },
+            disabled_filetypes = { 'alpha', 'NvimTree' }
         }
     }
-end}
+end
+
+return { setup = setup }
