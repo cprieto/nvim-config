@@ -88,6 +88,9 @@ local pkgs = {
 			with_sync = true
 		}
 	end,
+	config = function()
+		require'config.treesitter'.setup()
+	end,
   }
 }
 
