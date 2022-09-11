@@ -1,9 +1,9 @@
 local pkgs = {
     -- Theme
   {
-		'sainnhe/gruvbox-material',
+		'folke/tokyonight.nvim',
 		config = function()
-			require'config.colorscheme'.setup()
+			vim.cmd [[colorscheme tokyonight]]
 		end,
 	},
 
@@ -78,6 +78,17 @@ local pkgs = {
 		require'config.indentlines'.setup()
 	end,
   },
+
+  -- Treesitter
+  {
+	'nvim-treesitter/nvim-treesitter',
+	event = 'BufRead',
+	run = function()
+		require'nvim-treesitter.install'.update {
+			with_sync = true
+		}
+	end,
+  }
 }
 
 return { pkgs = pkgs }
