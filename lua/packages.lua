@@ -71,11 +71,16 @@ local pkgs = {
   -- Telescope!
   {
     'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
     opt = true,
     event = 'VimEnter',
     config = function()
       require'config.telescope'.setup()
     end,
+  },
+
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
   },
 
 	-- File tree
@@ -161,14 +166,15 @@ local pkgs = {
   },
 
   -- Autopair stuff
-  --[[{
+  {
     'windwp/nvim-autopairs',
     opt = true,
-    event = 'BufRead',
+    module = { 'nvim-autopairs' },
+    wants = 'nvim-treesitter',
     config = function()
       require'config.autopairs'.setup()
     end,
-  }--]]
+  },
 
   -- LSP!
   {
@@ -182,7 +188,7 @@ local pkgs = {
     config = function()
       require'mason-lspconfig'.setup()
     end,
-  }
+  },
 }
 
 return { pkgs = pkgs }

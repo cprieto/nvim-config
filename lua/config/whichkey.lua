@@ -29,6 +29,7 @@ local mappings = {
   },
   f = {
     name = 'Find',
+    e = { '<cmd>Telescope file_browser<cr>', 'File browser' },
     f = { '<cmd>Telescope find_files<cr>', 'Files' },
     o = { '<cmd>Telescope oldfiles<cr>', 'Previous files' },
     b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
