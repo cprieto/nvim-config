@@ -26,16 +26,20 @@ local cfg = {
   
   refactor = {
     highlight_current_scope = true,
+    
     highlight_definitions = {
       enable = true,
       clean_on_cursor_move = true,
     },
+    
     smart_rename = {
       enable = true,
       keymaps = {
         smart_rename = 'grr',
+
       }
     },
+    
     navigation = {
       enable = true,
       keymaps = {
@@ -45,6 +49,20 @@ local cfg = {
         goto_next_usage = '<a-*>',
         goto_previous_usage = '<a-#>',
       }
+    },
+
+    autotag = { 
+      enable = true,
+      filetypes = {'html', 'xml'},
+    },
+
+    rainbow = {
+      enable = true,
+      extended_mode = true,
+    },
+
+    context_commentstring = {
+      enable = true,
     }
   }
 }

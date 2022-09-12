@@ -1,11 +1,18 @@
 local pkgs = {
-    -- Theme
+  -- Theme
   {
 	  'folke/tokyonight.nvim',
 		config = function()
 			vim.cmd [[colorscheme tokyonight]]
 		end,
 	},
+
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require'mason'.setup()
+    end,
+  },
 
     -- Startup screen
 	{
@@ -14,6 +21,14 @@ local pkgs = {
     config = function()
       require'config.alpha'.setup()
     end
+  },
+
+  {
+    'gelguy/wilder.nvim',
+    wants = 'nvim-web-devicons',
+    config = function()
+      require'config.wilder'.setup() 
+    end,
   },
 
 	-- **** Lazy modules required by others ****
@@ -52,6 +67,16 @@ local pkgs = {
 	 	end,
 	 	event = "VimEnter",
 	},
+
+  -- Telescope!
+  {
+    'nvim-telescope/telescope.nvim',
+    opt = true,
+    event = 'VimEnter',
+    config = function()
+      require'config.telescope'.setup()
+    end,
+  },
 
 	-- File tree
 	{
@@ -98,6 +123,7 @@ local pkgs = {
   {
     'nvim-treesitter/nvim-treesitter-context',
     opt = true,
+    event = 'BufRead',
     wants = 'nvim-treesitter',
   },
 
@@ -105,8 +131,58 @@ local pkgs = {
   {
     'nvim-treesitter/nvim-treesitter-refactor',
     opt = true,
+    event = 'BufRead',
     wants = 'nvim-treesitter',
   },
+
+  -- Treesitter automatic HTML tags
+  {
+    'windwp/nvim-ts-autotag',
+    opt = true,
+    event = 'BufRead',
+    wants = 'nvim-treesitter',
+  },
+
+  -- Rainbow parenthesis
+  {
+    'p00f/nvim-ts-rainbow',
+    opt = true,
+    event = 'BufRead',
+    wants = 'nvim-treesitter',
+  },
+
+  -- Context aware comment
+  -- TODO: Fix keyboard mapping
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    opt = true,
+    event = 'BufRead',
+    wants = 'nvim-treesitter',
+  },
+
+  -- Autopair stuff
+  --[[{
+    'windwp/nvim-autopairs',
+    opt = true,
+    event = 'BufRead',
+    config = function()
+      require'config.autopairs'.setup()
+    end,
+  }--]]
+
+  -- LSP!
+  {
+    'neovim/nvim-lspconfig',
+  },
+
+  -- Config lsp with mason
+  {
+    'williamboman/mason-lspconfig.nvim',
+    wants = { 'nvim-lspconfig', 'mason' },
+    config = function()
+      require'mason-lspconfig'.setup()
+    end,
+  }
 }
 
 return { pkgs = pkgs }
