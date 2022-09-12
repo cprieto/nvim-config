@@ -1,7 +1,7 @@
 local pkgs = {
     -- Theme
   {
-		'folke/tokyonight.nvim',
+	  'folke/tokyonight.nvim',
 		config = function()
 			vim.cmd [[colorscheme tokyonight]]
 		end,
@@ -9,26 +9,29 @@ local pkgs = {
 
     -- Startup screen
 	{
-    	'goolord/alpha-nvim',
-        wants = 'nvim-web-devicons',
-    	config = function()
-            require'config.alpha'.setup()
-    	end
-  	},
+    'goolord/alpha-nvim',
+    wants = 'nvim-web-devicons',
+    config = function()
+      require'config.alpha'.setup()
+    end
+  },
 
 	-- **** Lazy modules required by others ****
-  	{
-		'nvim-lua/plenary.nvim',
+  {
+	  'nvim-lua/plenary.nvim',
 		module = 'plenary',
 	},
 
-  	{
-		'kyazdani42/nvim-web-devicons',
+  {
+	  'kyazdani42/nvim-web-devicons',
 		module = 'nvim-web-devicons',
 		config = function()
 			require'nvim-web-devicons'.setup { default = true }
 		end,
 	},
+
+  -- Dressing!
+  { 'stevearc/dressing.nvim' },
 
 	-- Status line
 	{
@@ -73,25 +76,37 @@ local pkgs = {
   -- Indent lines
   {
     'lukas-reineke/indent-blankline.nvim',
-	event = 'BufReadPre',
-	config = function()
-		require'config.indentlines'.setup()
-	end,
+	  event = 'BufReadPre',
+	  config = function()
+		  require'config.indentlines'.setup()
+	  end,
   },
 
   -- Treesitter
   {
-	'nvim-treesitter/nvim-treesitter',
-	event = 'BufRead',
-	run = function()
-		require'nvim-treesitter.install'.update {
-			with_sync = true
-		}
-	end,
-	config = function()
-		require'config.treesitter'.setup()
-	end,
-  }
+	  'nvim-treesitter/nvim-treesitter',
+    event = 'BufRead',
+  	run = function()
+	  	require'nvim-treesitter.install'.update { with_sync = true }
+  	end,
+	  config = function()
+		  require'config.treesitter'.setup()
+  	end,
+  },
+
+  -- Treesitter context
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    opt = true,
+    wants = 'nvim-treesitter',
+  },
+
+  -- Treesitter refactoring
+  {
+    'nvim-treesitter/nvim-treesitter-refactor',
+    opt = true,
+    wants = 'nvim-treesitter',
+  },
 }
 
 return { pkgs = pkgs }
