@@ -1,4 +1,6 @@
 local pkgs = {
+  'lewis6991/impatient.nvim',
+
   -- Theme
   {
     'folke/tokyonight.nvim',
@@ -26,6 +28,7 @@ local pkgs = {
   {
     'gelguy/wilder.nvim',
     wants = 'nvim-web-devicons',
+    event = 'VimEnter',
     config = function()
       require 'config.wilder'.setup()
     end,
@@ -35,6 +38,11 @@ local pkgs = {
   {
     'nvim-lua/plenary.nvim',
     module = 'plenary',
+  },
+
+  {
+    'MunifTanjim/nui.nvim',
+    module = 'nui',
   },
 
   {
@@ -53,7 +61,6 @@ local pkgs = {
     'nvim-lualine/lualine.nvim',
     wants = 'nvim-web-devicons',
     event = 'VimEnter',
-    opt = true,
     config = function()
       require 'config.lualine'.setup()
     end,
@@ -62,35 +69,33 @@ local pkgs = {
   -- WhichKey
   {
     "folke/which-key.nvim",
+    event = "VimEnter",
     config = function()
       require 'config.whichkey'.setup()
     end,
-    event = "VimEnter",
   },
 
   -- Telescope!
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    opt = true,
     event = 'VimEnter',
     config = function()
       require 'config.telescope'.setup()
     end,
-  },
-
-  {
-    'nvim-telescope/telescope-file-browser.nvim',
+    requires = {
+      'nvim-telescope/telescope-file-browser.nvim',
+    },
   },
 
   -- File tree
   {
-    'kyazdani42/nvim-tree.lua',
-    wants = 'nvim-web-devicons',
-    cmd = { 'NvimTreeToggle', 'NvimTreeClose' },
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
     config = function()
-      require 'config.nvimtree'.setup()
+      require 'config.tree'.setup()
     end,
+    wants = {'plenary.nvim', 'nvim-web-devicons', 'nui.nvim'},
   },
 
   -- Tabline
@@ -124,57 +129,39 @@ local pkgs = {
     end,
   },
 
-  -- Treesitter context
+  -- Treesitter extensions, they have to be installed AFTER treesitter
   {
     'nvim-treesitter/nvim-treesitter-context',
-    opt = true,
-    event = 'BufRead',
-    wants = 'nvim-treesitter',
+    after = 'nvim-treesitter',
   },
 
-  -- Treesitter refactoring
   {
     'nvim-treesitter/nvim-treesitter-refactor',
-    opt = true,
-    event = 'BufRead',
-    wants = 'nvim-treesitter',
+    after = 'nvim-treesitter',
   },
 
-  -- Treesitter automatic HTML tags
   {
     'windwp/nvim-ts-autotag',
-    opt = true,
-    event = 'BufRead',
-    wants = 'nvim-treesitter',
+    after = 'nvim-treesitter',
   },
 
-  -- Rainbow parenthesis
   {
     'p00f/nvim-ts-rainbow',
-    opt = true,
-    event = 'BufRead',
-    wants = 'nvim-treesitter',
+    after = 'nvim-treesitter',
   },
 
-  -- Context aware comment
-  -- TODO: Fix keyboard mapping
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
-    opt = true,
-    event = 'BufRead',
-    wants = 'nvim-treesitter',
+    after = 'nvim-treesitter',
   },
 
-  -- Autopair stuff
-  {
-    'windwp/nvim-autopairs',
-    opt = true,
-    module = { 'nvim-autopairs' },
-    wants = 'nvim-treesitter',
-    config = function()
-      require 'config.autopairs'.setup()
-    end,
-  },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   module = { 'nvim-autopairs' },
+  --   config = function()
+  --     require 'config.autopairs'.setup()
+  --   end,
+  -- },
 
   -- LSP!
   {
@@ -184,7 +171,7 @@ local pkgs = {
   -- Config lsp with mason
   {
     'williamboman/mason-lspconfig.nvim',
-    wants = { 'nvim-lspconfig', 'mason' },
+    wants = { 'nvim-lspconfig', 'mason.nvim' },
     config = function()
       require 'mason-lspconfig'.setup()
     end,
