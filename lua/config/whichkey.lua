@@ -10,9 +10,10 @@ local opts = {
 }
 
 local mappings = {
+  N = { '<cmd>ene <BAR> startinsert<cr>', 'New' },
   w = { '<cmd>update!<cr>', 'Save' },
   q = { '<cmd>qa!<cr>', 'Quit' },
-  t = { '<cmd>Neotree toggle<cr>', 'File explorer' },
+  e = { '<cmd>Neotree toggle<cr>', 'File explorer' },
   b = {
     name = 'Buffer',
     c = { '<cmd>bd!<cr>', 'Close current buffer' },

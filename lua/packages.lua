@@ -75,6 +75,14 @@ local pkgs = {
     end,
   },
 
+  {
+    'akinsho/toggleterm.nvim',
+    event = 'VimEnter',
+    config = function()
+      require 'toggleterm'.setup()
+    end,
+  },
+
   -- Telescope!
   {
     'nvim-telescope/telescope.nvim',
@@ -162,6 +170,15 @@ local pkgs = {
   --     require 'config.autopairs'.setup()
   --   end,
   -- },
+
+  -- Completion
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    config = function()
+      require 'config.cmp'.setup()
+    end,
+  },
 
   -- LSP!
   {
