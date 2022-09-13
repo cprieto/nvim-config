@@ -39,7 +39,6 @@ function M.packages()
 	local defaultOpts = {
 		profile = {
 			enable = true,
-			threshold = 0,
 		},
 		display = {
 			open_fn = function()
