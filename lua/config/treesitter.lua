@@ -7,31 +7,31 @@ local cfg = {
     'clojure', 'dockerfile', 'css', 'gitignore', 'gomod',
     'http', 'html', 'javascript', 'kotlin', 'java', 'ocaml',
     'ocamllex', 'regex', 'scala', 'scss', 'swift', 'typescript',
-    'vala', 'vue', 'zig', 'erlang', 'elixir', 'ruby', 
+    'vala', 'vue', 'zig', 'erlang', 'elixir', 'ruby',
     'gitattributes', 'julia', 'ocaml_interface', 'rst',
   },
   auto_install = true,
-  
+
   highlight = {
     enable = true,
   },
-  
+
   incremental_selection = {
     enable = true,
   },
-  
+
   indent = {
     enable = true,
   },
-  
+
   refactor = {
     highlight_current_scope = true,
-    
+
     highlight_definitions = {
       enable = true,
       clean_on_cursor_move = true,
     },
-    
+
     smart_rename = {
       enable = true,
       keymaps = {
@@ -39,7 +39,7 @@ local cfg = {
 
       }
     },
-    
+
     navigation = {
       enable = true,
       keymaps = {
@@ -51,9 +51,9 @@ local cfg = {
       }
     },
 
-    autotag = { 
+    autotag = {
       enable = true,
-      filetypes = {'html', 'xml'},
+      filetypes = { 'html', 'xml' },
     },
 
     rainbow = {
@@ -68,7 +68,7 @@ local cfg = {
 }
 
 local function setup()
-    require'nvim-treesitter.configs'.setup(cfg)
+  require 'nvim-treesitter.configs'.setup(cfg)
 end
 
 return { setup = setup }

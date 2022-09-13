@@ -7,7 +7,7 @@ function M.key_mapper(mode, key, result, opts)
 end
 
 function M.find_files()
-	local fzf = require'fzf-lua'
+	local fzf = require 'fzf-lua'
 	if vim.fn.system 'git rev-parse --is-inside-work-tree' == true then
 		fzf.git_files()
 	else
@@ -29,7 +29,7 @@ function M.find_buffers()
 
 	vim.ui.select(results, { prompt = "Find buffer:" }, function(selected)
 		if selected then
-			api.nvim_command("buffer " .. selected) 
+			api.nvim_command("buffer " .. selected)
 		end
 	end)
 end
@@ -43,24 +43,24 @@ function M.packages()
 		},
 		display = {
 			open_fn = function()
-				return require'packer.util'.float { border = "rounded" }
+				return require 'packer.util'.float { border = "rounded" }
 			end,
 		}
 	}
 
 	local fn = vim.fn
-    local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+	local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 	local bootstrapped = false
 
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system {
-            "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path
-        }
-        vim.cmd [[packadd packer.nvim]]
-        bootstrapped = true
-    end
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system {
+			"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path
+		}
+		vim.cmd [[packadd packer.nvim]]
+		bootstrapped = true
+	end
 
-	local packer = require'packer'
+	local packer = require 'packer'
 
 	-- Configure package manager
 	packer.init(defaultOpts)

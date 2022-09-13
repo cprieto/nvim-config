@@ -9,8 +9,8 @@ local cfg = {
 }
 
 local function setup()
-  require'nvim-tree'.setup(cfg)
-  require'utils'.key_mapper('n', '<leader>\\', ':NvimTreeToggle<cr>')
+  require 'nvim-tree'.setup(cfg)
+  require 'utils'.key_mapper('n', '<leader>\\', ':NvimTreeToggle<cr>')
 end
 
 return { setup = setup }

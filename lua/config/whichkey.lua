@@ -1,4 +1,3 @@
-
 local cfg = {
   window = { border = 'single' },
   disable = {
@@ -39,10 +38,10 @@ local mappings = {
 }
 
 local function setup()
-    local whichkey = require'which-key'
+  local whichkey = require 'which-key'
 
-    whichkey.setup(cfg)
-    whichkey.register(mappings, opts)
+  whichkey.setup(cfg)
+  whichkey.register(mappings, opts)
 end
 
 return { setup = setup }

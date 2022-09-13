@@ -3,7 +3,7 @@ local M = {}
 local function footer()
     -- Get neovim version
     local version = vim.version()
-    local version_text = ' Neovim v'.. version.major .. '.' .. version.minor .. '.' .. version.patch
+    local version_text = ' Neovim v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
 
     -- `packer_plugins` is a global table with loaded plugins
     -- We are interested in the number of keys, hence `#`

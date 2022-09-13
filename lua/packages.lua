@@ -1,25 +1,25 @@
 local pkgs = {
   -- Theme
   {
-	  'folke/tokyonight.nvim',
-		config = function()
-			vim.cmd [[colorscheme tokyonight]]
-		end,
-	},
+    'folke/tokyonight.nvim',
+    config = function()
+      vim.cmd [[colorscheme tokyonight]]
+    end,
+  },
 
   {
     'williamboman/mason.nvim',
     config = function()
-      require'mason'.setup()
+      require 'mason'.setup()
     end,
   },
 
-    -- Startup screen
-	{
+  -- Startup screen
+  {
     'goolord/alpha-nvim',
     wants = 'nvim-web-devicons',
     config = function()
-      require'config.alpha'.setup()
+      require 'config.alpha'.setup()
     end
   },
 
@@ -27,46 +27,46 @@ local pkgs = {
     'gelguy/wilder.nvim',
     wants = 'nvim-web-devicons',
     config = function()
-      require'config.wilder'.setup() 
+      require 'config.wilder'.setup()
     end,
   },
 
-	-- **** Lazy modules required by others ****
+  -- **** Lazy modules required by others ****
   {
-	  'nvim-lua/plenary.nvim',
-		module = 'plenary',
-	},
+    'nvim-lua/plenary.nvim',
+    module = 'plenary',
+  },
 
   {
-	  'kyazdani42/nvim-web-devicons',
-		module = 'nvim-web-devicons',
-		config = function()
-			require'nvim-web-devicons'.setup { default = true }
-		end,
-	},
+    'kyazdani42/nvim-web-devicons',
+    module = 'nvim-web-devicons',
+    config = function()
+      require 'nvim-web-devicons'.setup { default = true }
+    end,
+  },
 
   -- Dressing!
   { 'stevearc/dressing.nvim' },
 
-	-- Status line
-	{
-		'nvim-lualine/lualine.nvim',
-		wants = 'nvim-web-devicons',
-		event = 'VimEnter',
-		opt = true,
-		config = function()
-			require'config.lualine'.setup()
-		end,
-	},
+  -- Status line
+  {
+    'nvim-lualine/lualine.nvim',
+    wants = 'nvim-web-devicons',
+    event = 'VimEnter',
+    opt = true,
+    config = function()
+      require 'config.lualine'.setup()
+    end,
+  },
 
-	-- WhichKey
-	{
-		"folke/which-key.nvim",
-	 	config = function()
-	 		require'config.whichkey'.setup()
-	 	end,
-	 	event = "VimEnter",
-	},
+  -- WhichKey
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require 'config.whichkey'.setup()
+    end,
+    event = "VimEnter",
+  },
 
   -- Telescope!
   {
@@ -75,7 +75,7 @@ local pkgs = {
     opt = true,
     event = 'VimEnter',
     config = function()
-      require'config.telescope'.setup()
+      require 'config.telescope'.setup()
     end,
   },
 
@@ -83,15 +83,15 @@ local pkgs = {
     'nvim-telescope/telescope-file-browser.nvim',
   },
 
-	-- File tree
-	{
-		'kyazdani42/nvim-tree.lua',
-		wants = 'nvim-web-devicons',
-		cmd = { 'NvimTreeToggle', 'NvimTreeClose' },
-		config = function()
-      require'config.nvimtree'.setup()
-		end,
-	},
+  -- File tree
+  {
+    'kyazdani42/nvim-tree.lua',
+    wants = 'nvim-web-devicons',
+    cmd = { 'NvimTreeToggle', 'NvimTreeClose' },
+    config = function()
+      require 'config.nvimtree'.setup()
+    end,
+  },
 
   -- Tabline
   {
@@ -99,29 +99,29 @@ local pkgs = {
     wants = 'nvim-web-devicons',
     event = 'VimEnter',
     config = function()
-      require'config.bufferline'.setup()
+      require 'config.bufferline'.setup()
     end,
   },
 
   -- Indent lines
   {
     'lukas-reineke/indent-blankline.nvim',
-	  event = 'BufReadPre',
-	  config = function()
-		  require'config.indentlines'.setup()
-	  end,
+    event = 'BufReadPre',
+    config = function()
+      require 'config.indentlines'.setup()
+    end,
   },
 
   -- Treesitter
   {
-	  'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter',
     event = 'BufRead',
-  	run = function()
-	  	require'nvim-treesitter.install'.update { with_sync = true }
-  	end,
-	  config = function()
-		  require'config.treesitter'.setup()
-  	end,
+    run = function()
+      require 'nvim-treesitter.install'.update { with_sync = true }
+    end,
+    config = function()
+      require 'config.treesitter'.setup()
+    end,
   },
 
   -- Treesitter context
@@ -172,7 +172,7 @@ local pkgs = {
     module = { 'nvim-autopairs' },
     wants = 'nvim-treesitter',
     config = function()
-      require'config.autopairs'.setup()
+      require 'config.autopairs'.setup()
     end,
   },
 
@@ -186,7 +186,7 @@ local pkgs = {
     'williamboman/mason-lspconfig.nvim',
     wants = { 'nvim-lspconfig', 'mason' },
     config = function()
-      require'mason-lspconfig'.setup()
+      require 'mason-lspconfig'.setup()
     end,
   },
 }
