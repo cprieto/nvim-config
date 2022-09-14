@@ -1,8 +1,6 @@
 local function setup()
     local lualine = require 'lualine'
-
-    local lualine_c = lualine.get_config().sections.lualine_c
-    table.insert(lualine_c, 'lsp_progress')
+    local navic = require 'nvim-navic'
 
     lualine.setup {
         options = {
@@ -13,13 +11,13 @@ local function setup()
         extensions = { 'neo-tree' },
 
         sections = {
-            lualine_c = lualine_c
+            lualine_c = {
+                'filename',
+                'lsp_progress',
+                { navic.get_location, cond = navic.is_available },
+            }
         },
-        -- TODO: Configure lsp progress
     }
-
-    -- Append to existing configuration
-    -- table.insert(lualine.get_config().sections.lualine_c, 'lsp_progress')
 end
 
 return { setup = setup }

@@ -66,6 +66,7 @@ local pkgs = {
     end,
     requires = {
       'arkav/lualine-lsp-progress',
+      'SmiteshP/nvim-navic',
     },
   },
 
