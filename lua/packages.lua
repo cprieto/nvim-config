@@ -64,6 +64,9 @@ local pkgs = {
     config = function()
       require 'config.lualine'.setup()
     end,
+    requires = {
+      'arkav/lualine-lsp-progress',
+    },
   },
 
   -- WhichKey
@@ -178,6 +181,10 @@ local pkgs = {
     config = function()
       require 'config.cmp'.setup()
     end,
+    requires = {
+      'onsails/lspkind.nvim',
+      'hrsh7th/cmp-nvim-lua',
+    }
   },
 
   -- LSP!
