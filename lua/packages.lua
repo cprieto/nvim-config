@@ -185,6 +185,10 @@ local pkgs = {
     requires = {
       'onsails/lspkind.nvim',
       'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-emoji',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-calc',
+      'ray-x/cmp-treesitter',
     }
   },
 

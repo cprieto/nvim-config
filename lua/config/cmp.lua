@@ -9,7 +9,10 @@ local function setup()
       format = lspkind.cmp_format {
         mode = 'symbol_text',
         menu = {
-          nvim_lua = '[LUA]'
+          buffer = '[📄 Buffer]',
+          nvim_lua = '[🌙 Lua]',
+          calc = '[🧮 Calc]',
+          treesitter = '[🌳 Treesitter]',
         }
       }
     },
@@ -20,9 +23,22 @@ local function setup()
     },
 
     sources = {
-      { name = 'nvim_lua' }
+      { name = 'treesitter' },
+      { name = 'buffer' },
+      { name = 'nvim_lua' },
+      { name = 'emoji' },
+      { name = 'calc' },
+    },
+
+    mapping = {
+      ['<cr>'] = cmp.mapping {
+        i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+      },
+      ['<up>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i' }),
+      ['<down>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i' }),
     }
   }
 end
 
 return { setup = setup }
+
