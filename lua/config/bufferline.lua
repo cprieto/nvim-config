@@ -12,7 +12,6 @@ local options = {
   },
   numbers = 'ordinal',
   separator_style = 'thin',
-  always_show_bufferline = false,
   -- TODO: Configure LSP
 }
 
