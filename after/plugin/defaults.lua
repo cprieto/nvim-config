@@ -54,3 +54,4 @@ bo.autoindent = true
 bo.smartindent = true
 bo.textwidth = 120
 opt.expandtab = true
+
