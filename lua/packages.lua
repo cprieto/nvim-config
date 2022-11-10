@@ -67,7 +67,7 @@ local pkgs = {
       require 'nvim-web-devicons'.setup { default = true }
     end,
   },
-  
+
   -- Dressing!
   { 'stevearc/dressing.nvim' },
 
@@ -183,13 +183,13 @@ local pkgs = {
     after = 'nvim-treesitter',
   },
 
-  -- {
-  --   'windwp/nvim-autopairs',
-  --   module = { 'nvim-autopairs' },
-  --   config = function()
-  --     require 'config.autopairs'.setup()
-  --   end,
-  -- },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function()
+      require 'nvim-autopairs'.setup()
+    end,
+  },
 
   -- Completion
   {
