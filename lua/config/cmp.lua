@@ -5,10 +5,16 @@ local function setup()
   local lspkind = require 'lspkind'
 
   cmp.setup {
+    snippet = {
+      expand = function(args)
+        require 'snippy'.expand_snippet(args.body)
+      end,
+    },
     formatting = {
       format = lspkind.cmp_format {
         mode = 'symbol_text',
         menu = {
+          nvim_lsp = '[✨ LSP]',
           buffer = '[📄 Buffer]',
           nvim_lua = '[🌙 Lua]',
           calc = '[🧮 Calc]',
@@ -23,8 +29,9 @@ local function setup()
     },
 
     sources = {
-      { name = 'treesitter' },
       { name = 'buffer' },
+      { name = 'treesitter' },
+      { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'emoji' },
       { name = 'calc' },

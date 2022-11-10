@@ -36,6 +36,10 @@ local mappings = {
     s = { '<cmd>Telescope treesitter<cr>', 'Symbols' },
     S = { '<cmd>Telescope live_grep<cr>', 'Grep!' },
   },
+  t = {
+    name = 'Terms',
+    t = { '<cmd>ToggleTerm direction=float<cr>', 'Show/hide terminal' },
+  }
 }
 
 local function setup()

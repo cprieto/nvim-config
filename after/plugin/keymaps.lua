@@ -20,3 +20,6 @@ keymap("n", "<S-l>", ":bnext<CR>")
 
 -- Cancel search highlight with ESC
 keymap("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>")
+
+-- In terminal mode
+keymap('t', '<ESC>', [[<C-\><C-n> :ToggleTerm<CR>]])

@@ -8,14 +8,29 @@ local pkgs = {
       vim.cmd [[colorscheme tokyonight]]
     end,
   },
-
+  -- Mason tooling
   {
     'williamboman/mason.nvim',
     config = function()
       require 'mason'.setup()
     end,
   },
-
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require 'mason-lspconfig'.setup()
+    end,
+  },
+  -- LSP
+  {
+    'neovim/nvim-lspconfig',
+  },
+  {
+    'simrat39/rust-tools.nvim',
+    config = function()
+      require 'rust-tools'.setup()
+    end,
+  },
   -- Startup screen
   {
     'goolord/alpha-nvim',
@@ -52,7 +67,7 @@ local pkgs = {
       require 'nvim-web-devicons'.setup { default = true }
     end,
   },
-
+  
   -- Dressing!
   { 'stevearc/dressing.nvim' },
 
@@ -134,7 +149,8 @@ local pkgs = {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufRead',
     run = function()
-      require 'nvim-treesitter.install'.update { with_sync = true }
+      local ts_update = require 'nvim-treesitter.install'.update { with_sync = true }
+      ts_update()
     end,
     config = function()
       require 'config.treesitter'.setup()
@@ -184,7 +200,14 @@ local pkgs = {
     end,
     requires = {
       'onsails/lspkind.nvim',
-    }
+      {
+        'dcampos/nvim-snippy',
+        config = function()
+          require 'config.snippets'.setup()
+        end,
+      },
+    },
+    wants = { 'nvim-snippy' },
   },
 
   {
@@ -212,18 +235,9 @@ local pkgs = {
     after = 'nvim-cmp',
   },
 
-  -- LSP!
   {
-    'neovim/nvim-lspconfig',
-  },
-
-  -- Config lsp with mason
-  {
-    'williamboman/mason-lspconfig.nvim',
-    wants = { 'nvim-lspconfig', 'mason.nvim' },
-    config = function()
-      require 'mason-lspconfig'.setup()
-    end,
+    'hrsh7th/cmp-nvim-lsp',
+    requires = { 'nvim-cmp', 'nvim-lspconfig' },
   },
 }
 
