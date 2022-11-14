@@ -21,9 +21,13 @@ local pkgs = {
       require 'mason-lspconfig'.setup()
     end,
   },
+
   -- LSP
   {
     'neovim/nvim-lspconfig',
+    config = function()
+      vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+    end,
   },
   {
     'simrat39/rust-tools.nvim',
@@ -31,6 +35,14 @@ local pkgs = {
       require 'rust-tools'.setup()
     end,
   },
+  {
+    'folke/trouble.nvim',
+    config = function()
+      require 'trouble'.setup()
+    end,
+  },
+
+
   -- Startup screen
   {
     'goolord/alpha-nvim',
@@ -39,7 +51,6 @@ local pkgs = {
       require 'config.alpha'.setup()
     end
   },
-
   {
     'gelguy/wilder.nvim',
     wants = 'nvim-web-devicons',
@@ -93,7 +104,6 @@ local pkgs = {
       require 'config.whichkey'.setup()
     end,
   },
-
   {
     'akinsho/toggleterm.nvim',
     event = 'VimEnter',
@@ -162,7 +172,6 @@ local pkgs = {
     'nvim-treesitter/nvim-treesitter-context',
     after = 'nvim-treesitter',
   },
-
   {
     'nvim-treesitter/nvim-treesitter-refactor',
     after = 'nvim-treesitter',
@@ -172,17 +181,14 @@ local pkgs = {
     'windwp/nvim-ts-autotag',
     after = 'nvim-treesitter',
   },
-
   {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter',
   },
-
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
     after = 'nvim-treesitter',
   },
-
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -209,17 +215,14 @@ local pkgs = {
     },
     wants = { 'nvim-snippy' },
   },
-
   {
     'hrsh7th/cmp-nvim-lua',
     after = 'nvim-cmp'
   },
-
   {
     'hrsh7th/cmp-emoji',
     after = 'nvim-cmp',
   },
-
   {
     'hrsh7th/cmp-buffer',
     after = 'nvim-cmp',
@@ -229,12 +232,10 @@ local pkgs = {
     'hrsh7th/cmp-calc',
     after = 'nvim-cmp',
   },
-
   {
     'ray-x/cmp-treesitter',
     after = 'nvim-cmp',
   },
-
   {
     'hrsh7th/cmp-nvim-lsp',
     requires = { 'nvim-cmp', 'nvim-lspconfig' },
