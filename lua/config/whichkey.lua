@@ -39,6 +39,15 @@ local mappings = {
   t = {
     name = 'Terms',
     t = { '<cmd>ToggleTerm direction=float<cr>', 'Show/hide terminal' },
+  },
+  {
+    k = {
+      name = 'Telekasten',
+      n = { '<cmd>Telekasten new_note<cr>', 'New note' },
+      t = { '<cmd>Telekasten goto_today<cr>', "Today's note" },
+      w = { '<cmd>Telekasten goto_thisweek<cr>', "Weekly's note" },
+
+    }
   }
 }
 

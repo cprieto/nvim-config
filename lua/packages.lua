@@ -116,7 +116,6 @@ local pkgs = {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    event = 'VimEnter',
     config = function()
       require 'config.telescope'.setup()
     end,
@@ -240,6 +239,30 @@ local pkgs = {
     'hrsh7th/cmp-nvim-lsp',
     requires = { 'nvim-cmp', 'nvim-lspconfig' },
   },
+
+  {
+    'renerocksai/telekasten.nvim',
+    config = function()
+      require 'config.kasten'.setup()
+    end,
+    requires = {
+      'renerocksai/calendar-vim',
+    },
+  },
+
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require 'scrollbar'.setup()
+    end,
+  },
+
+  {
+    'nvim-zh/colorful-winsep.nvim',
+    config = function()
+      require 'colorful-winsep'.setup()
+    end,
+  }
 }
 
 return { pkgs = pkgs }
