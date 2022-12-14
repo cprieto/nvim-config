@@ -12,7 +12,8 @@ local options = {
   },
   numbers = 'ordinal',
   separator_style = 'thin',
-  -- TODO: Configure LSP
+  diagnostics = "nvim_lsp",
+  always_show_bufferline = false,
 }
 
 local function setup()
